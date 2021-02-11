@@ -17,7 +17,6 @@ const minesweeperActions = {
     }
   },
 
-  // reveal a cell (and all cells around it until a cell containing a mine is reached)
   REVEAL_CELL(state, { cellId }) {
     if (state.won || state.lost || helpers.getCell(state, cellId).flagged) {
       return state;
