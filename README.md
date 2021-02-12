@@ -1,4 +1,4 @@
-#Minesweeper95
+# Minesweeper95
 
 ## Installation
 
