@@ -8,6 +8,7 @@ import {
 } from "./components/MinesweeperStore";
 import Game from "./components/Game/Game";
 import "./App.css";
+import logo from "./assets/logo.png";
 
 class App extends Component {
   constructor(props) {
@@ -56,6 +57,9 @@ class App extends Component {
     const { storeState } = this.state;
     return (
       <div>
+        <header className="app-header">
+          <img src={logo} alt="minesweeper95" />
+        </header>
         <div className="app-container">
           <Game
             {...storeState}
@@ -94,7 +98,9 @@ class App extends Component {
               max="2499"
             />
           </div>
-          <button onClick={this.reset.bind(this)}>Start</button>
+          <button className="btn" onClick={this.reset.bind(this)}>
+            Start
+          </button>
         </div>
       </div>
     );
