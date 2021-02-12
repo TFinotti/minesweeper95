@@ -1,5 +1,5 @@
 import { range } from "lodash";
-import Redux from "redux";
+import { createStore } from "redux";
 import minesweeperReducer from "./MinesweeperReducer";
 
 const initialWidth = 16;
@@ -31,7 +31,7 @@ function getMinesweeperStore({ width, height, mineCount }) {
       })
     ),
   };
-  return Redux.createStore((state = initialState, action = {}) =>
+  return createStore((state = initialState, action = {}) =>
     minesweeperReducer(state, action)
   );
 }
