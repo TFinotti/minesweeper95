@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { flatten } from "lodash";
-import { PopBox } from "./Utils";
-import helpers from "./Helpers";
-import { Minefield, MinefieldRow } from "./Minefield";
-import { MineCell, CellContent } from "./MineCell";
-import DigitalCounter from "./DigitalCounter";
+import { PopBox } from "../Utils/Utils";
+import helpers from "../Helpers";
+import { Minefield, MinefieldRow } from "../Minefield/Minefield";
+import { MineCell, CellContent } from "../MineCell/MineCell";
+import DigitalCounter from "../DigitalCounter/DigitalCounter";
+import styles from "./Game.module.css";
 
 export default class Game extends Component {
   componentWillUnmount() {
@@ -80,11 +81,11 @@ export default class Game extends Component {
     const now = Date.now();
 
     return (
-      <PopBox className="minesweeper">
-        <PopBox className="minesweeper__info" inset>
+      <PopBox className={styles.game}>
+        <PopBox className={styles.game_info} inset>
           <DigitalCounter number={mineCount - flagCount} />
-          <button className="minesweeper__win-label" onClick={onReset}>
-            {won ? "You won!" : lost ? "You Lost" : "Reset"}
+          <button className={styles.game_win_label} onClick={onReset}>
+            {won ? "You Won!" : lost ? "You Lost..." : "Reset"}
           </button>
           <DigitalCounter
             number={

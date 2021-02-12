@@ -1,0 +1,56 @@
+.mine-cell {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: default;
+}
+.mine-cell--hidden:hover:active:not(.mine-cell--flagged),
+.mine-cell--revealed {
+  background: #aaa;
+  border: 1px solid #6e6e6e;
+}
+.mine-cell--revealed.mine-cell--mine {
+  background: #f00;
+}
+.mine-cell--revealed.mine-cell--mine {
+  background-image: url("http://old.no/icon/entertainment/mini-mine.gif");
+  background-repeat: no-repeat;
+  background-color: #f00;
+  background-size: 70% 70%;
+  background-position: center;
+}
+.mine-cell--flagged {
+  background-image: url("http://dougx.net/sweeper/flag.png");
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  background-position: center;
+}
+.mine-cell-number--1 {
+  color: #00f;
+}
+.mine-cell-number--2 {
+  color: #007b00;
+}
+.mine-cell-number--3 {
+  color: #f00;
+}
+.mine-cell-number--4 {
+  color: #00007b;
+}
+.mine-cell-number--5 {
+  color: #7b0000;
+}
+.mine-cell-number--6 {
+  color: #008080;
+}
+.mine-cell-number--7 {
+  color: #000;
+}
+.mine-cell-number--8 {
+  color: #bdbdbd;
+}

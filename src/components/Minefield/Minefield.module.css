@@ -1,0 +1,8 @@
+.minefield {
+  display: inline-block;
+  overflow: auto;
+}
+.minefield_row {
+  overflow: visible;
+  white-space: nowrap;
+}

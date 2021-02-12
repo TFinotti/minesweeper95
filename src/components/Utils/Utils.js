@@ -1,3 +1,5 @@
+import "./Utils.css";
+
 export function PopBox(props) {
   const className = classNames(
     "pop-box",

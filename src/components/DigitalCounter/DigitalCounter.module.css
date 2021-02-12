@@ -1,0 +1,7 @@
+.digital_counter {
+  display: inline-block;
+  background: #000;
+  color: #f00;
+  font-size: 40px;
+  font-family: Courier;
+}

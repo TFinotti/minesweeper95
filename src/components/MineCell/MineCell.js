@@ -1,4 +1,5 @@
-import { classNames, PopBox } from "./Utils";
+import { classNames, PopBox } from "../Utils/Utils";
+import "./MineCell.css";
 
 export function MineCell(props) {
   const { revealed, flagged, mine } = props;
