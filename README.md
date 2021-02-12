@@ -3,10 +3,9 @@
 ## Installation
 
 ```sh
-$ git clone https://github.com/senolakkas/react-redux-minesweeper.git react-redux-minesweeper
-$ cd react-redux-minesweeper
+$ git clone https://github.com/TFinotti/minesweeper95.git minesweeper95
+$ cd minesweeper95
 $ npm install
-$ npm start # start the server
 ```
 
 ## Available Scripts
