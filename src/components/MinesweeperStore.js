@@ -2,12 +2,12 @@ import { range } from "lodash";
 import { createStore } from "redux";
 import minesweeperReducer from "./MinesweeperReducer";
 
-const initialWidth = 16;
-const initialHeight = 16;
-const initialMines = 40;
+export const initialWidth = 16;
+export const initialHeight = 16;
+export const initialMines = 40;
 
 // create a redux store with using minesweeper reducer and an initial state generated from passed options
-function getMinesweeperStore({ width, height, mineCount }) {
+export function getMinesweeperStore({ width, height, mineCount }) {
   const initialState = {
     width,
     height,

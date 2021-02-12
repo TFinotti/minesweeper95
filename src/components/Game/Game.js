@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { flatten } from "lodash";
 import { PopBox } from "../Utils/Utils";
-import helpers from "../Helpers";
+import { helpers } from "../Helpers";
 import { Minefield, MinefieldRow } from "../Minefield/Minefield";
 import { MineCell, CellContent } from "../MineCell/MineCell";
 import DigitalCounter from "../DigitalCounter/DigitalCounter";
@@ -35,8 +35,8 @@ export default class Game extends Component {
   onCellMouseUp(cell, event) {
     event.preventDefault();
     const { store } = this.props;
-    const { which } = event.nativeEvent;
-    switch (which) {
+    // eslint-disable-next-line default-case
+    switch (event.nativeEvent.which) {
       case 1:
         store.dispatch({
           type: "REVEAL_CELL",
@@ -48,8 +48,6 @@ export default class Game extends Component {
           type: "REVEAL_AROUND_CELL",
           cellId: cell.id,
         });
-        break;
-      default:
         break;
     }
     return false;
@@ -64,6 +62,10 @@ export default class Game extends Component {
         cellId: cell.id,
       });
     }
+  }
+
+  onContextMenu(event) {
+    event.preventDefault();
     return false;
   }
 
@@ -108,8 +110,9 @@ export default class Game extends Component {
                     ((won || lost) && !cell.flagged && cell.mine)
                   }
                   onMouseDown={this.onCellMouseDown.bind(this, cell)}
-                  onClick={this.onCellMouseUp.bind(this, cell)}
-                  onContextMenu={(e) => (e.preventDefault(), false)}
+                  onMouseUp={this.onCellMouseUp.bind(this, cell)}
+                  // eslint-disable-next-line no-sequences
+                  onContextMenu={this.onContextMenu.bind(this)}
                 >
                   <CellContent
                     {...cell}

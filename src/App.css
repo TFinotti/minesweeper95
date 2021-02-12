@@ -17,3 +17,8 @@
   width: 300px;
   margin: 0 auto;
 }
+
+.app-controls label {
+  display: inline-block;
+  width: 100px;
+}

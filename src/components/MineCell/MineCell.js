@@ -14,7 +14,7 @@ export function MineCell(props) {
 }
 
 export function MineCellNumber({ number }) {
-  const className = `mine-cell-number mine-cell-number--${number}`;
+  const className = `mine-cell-number--${number}`;
   return <span className={className}>{number || ""}</span>;
 }
 

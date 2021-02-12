@@ -14,9 +14,7 @@
   background: #aaa;
   border: 1px solid #6e6e6e;
 }
-.mine-cell--revealed.mine-cell--mine {
-  background: #f00;
-}
+
 .mine-cell--revealed.mine-cell--mine {
   background-image: url("http://old.no/icon/entertainment/mini-mine.gif");
   background-repeat: no-repeat;

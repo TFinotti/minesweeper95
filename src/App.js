@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { store } from "./components/MinesweeperStore";
+import {
+  store,
+  getMinesweeperStore,
+  initialWidth,
+  initialHeight,
+  initialMines,
+} from "./components/MinesweeperStore";
 import Game from "./components/Game/Game";
 import "./App.css";
 
@@ -8,21 +14,15 @@ class App extends Component {
     super(props);
     this.store = store;
     this.state = {
-      width: store.width,
-      height: store.height,
-      mineCount: store.mineCount,
+      width: initialWidth,
+      height: initialHeight,
+      mineCount: initialMines,
       storeState: store.getState(),
     };
-
-    this.reset = this.reset.bind(this);
   }
 
   componentDidMount() {
     this.subscribe();
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
   }
 
   subscribe() {
@@ -40,13 +40,16 @@ class App extends Component {
     }
   }
 
+  updateStateInt(key, event) {
+    this.setState({ [key]: parseInt(event.target.value) });
+  }
+
   reset() {
-    this.setState({
-      width: store.width,
-      height: store.height,
-      mineCount: store.mineCount,
-      storeState: store.getState(),
-    });
+    const { width, height, mineCount } = this.state;
+    this.unsubscribe();
+    this.store = getMinesweeperStore({ width, height, mineCount });
+    this.subscribe();
+    this.setState({ storeState: this.store.getState() });
   }
 
   render() {
@@ -54,10 +57,44 @@ class App extends Component {
     return (
       <div>
         <div className="app-container">
-          <Game {...storeState} store={this.store} onReset={this.reset} />
+          <Game
+            {...storeState}
+            store={this.store}
+            onReset={this.reset.bind(this)}
+          />
         </div>
         <div className="app-controls">
-          <button onClick={this.reset}>Start</button>
+          <div>
+            <label>Width</label>
+            <input
+              type="number"
+              value={this.state.width}
+              onChange={this.updateStateInt.bind(this, "width")}
+              min="0"
+              max="50"
+            />
+          </div>
+          <div>
+            <label>Height</label>
+            <input
+              type="number"
+              value={this.state.height}
+              onChange={this.updateStateInt.bind(this, "height")}
+              min="0"
+              max="50"
+            />
+          </div>
+          <div>
+            <label>Mines</label>
+            <input
+              type="number"
+              value={this.state.mineCount}
+              onChange={this.updateStateInt.bind(this, "mineCount")}
+              min="0"
+              max="2499"
+            />
+          </div>
+          <button onClick={this.reset.bind(this)}>Start</button>
         </div>
       </div>
     );

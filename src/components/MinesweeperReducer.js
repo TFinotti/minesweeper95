@@ -1,4 +1,4 @@
-import minesweeperActions from "./MinesweeperActions";
+import { minesweeperActions } from "./MinesweeperActions";
 
 function minesweeperReducer(state, action) {
   if (minesweeperActions.hasOwnProperty(action.type)) {

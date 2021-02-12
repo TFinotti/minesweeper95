@@ -1,7 +1,7 @@
-import helpers from "./Helpers";
+import { helpers } from "./Helpers";
 import { flatten, sampleSize } from "lodash";
 
-const minesweeperActions = {
+export const minesweeperActions = {
   "@@redux/INIT"(state) {
     return state;
   },
@@ -68,5 +68,3 @@ const minesweeperActions = {
     };
   },
 };
-
-export default minesweeperActions;

@@ -1,6 +1,6 @@
 import { flatten } from "lodash";
 
-const helpers = {
+export const helpers = {
   // assigns props to the cell with id
   assignCell(state, cellId, props) {
     const { grid } = state;
@@ -45,20 +45,19 @@ const helpers = {
 
   // get cells around cell (where cell.id === cellId)
   getNeighbors(state, cellId) {
-    const { grid } = state;
     const { x, y } = this.getCell(state, cellId);
     return [
-      this.getCellAt(grid, { x: x - 1, y: y - 1 }), // top left
-      this.getCellAt(grid, { x: x, y: y - 1 }), // top
-      this.getCellAt(grid, { x: x + 1, y: y - 1 }), // top right
+      this.getCellAt(state, { x: x - 1, y: y - 1 }), // top left
+      this.getCellAt(state, { x: x, y: y - 1 }), // top
+      this.getCellAt(state, { x: x + 1, y: y - 1 }), // top right
 
-      this.getCellAt(grid, { x: x - 1, y: y }), // left
-      this.getCellAt(grid, { x: x + 1, y: y }), // right
+      this.getCellAt(state, { x: x - 1, y: y }), // left
+      this.getCellAt(state, { x: x + 1, y: y }), // right
 
-      this.getCellAt(grid, { x: x - 1, y: y + 1 }), // bottom left
-      this.getCellAt(grid, { x: x, y: y + 1 }), // bottom
-      this.getCellAt(grid, { x: x + 1, y: y + 1 }), // bottom right
-    ].filter((cell) => !!cell);
+      this.getCellAt(state, { x: x - 1, y: y + 1 }), // bottom left
+      this.getCellAt(state, { x: x, y: y + 1 }), // bottom
+      this.getCellAt(state, { x: x + 1, y: y + 1 }), // bottom right
+    ].filter((cell) => !!cell); // remove null cells (if target cell is on an edge)
   },
 
   // starting at startCell continuing through its neighbors, finds all cells that touch no mines (returns an array of ids)
@@ -107,5 +106,3 @@ const helpers = {
     return nonMines.every((c) => c.revealed);
   },
 };
-
-export default helpers;
